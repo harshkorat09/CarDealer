@@ -1,0 +1,12 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/"
+
+[build.env]
+NODE_ENV = "production"
+
+[env]
+NODE_ENV = "production"
