@@ -7,7 +7,8 @@ import ContactForm from '../components/ContactForm'
 import carsData from '../data/cars'
 import logo from '../assets/logo.svg'
 
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// Remove trailing slash to prevent double slashes
+const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
 
 const features = [
   { title: 'Verified Inventory', description: 'Hand-picked premium cars with clean history.' },
