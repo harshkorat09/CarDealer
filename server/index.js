@@ -10,7 +10,24 @@ import { seedCars } from './data/cars.js'
 dotenv.config()
 
 const app = express()
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }))
+
+// Flexible CORS to handle trailing slashes
+const corsOptions = {
+  origin: (origin, callback) => {
+    const allowedOrigin = process.env.CLIENT_URL || 'http://localhost:5173'
+    const normalizedAllowed = allowedOrigin.replace(/\/$/, '') // Remove trailing slash
+    const normalizedOrigin = origin?.replace(/\/$/, '') || ''
+    
+    if (!origin || normalizedOrigin === normalizedAllowed || origin === allowedOrigin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use('/api/cars', carsRouter)
