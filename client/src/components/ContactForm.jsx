@@ -16,12 +16,15 @@ const ContactForm = () => {
     setLoading(true)
 
     try {
-      await axios.post(`${apiUrl}/api/contacts`, { name, email, message })
+      console.log('Sending contact form to:', `${apiUrl}/api/contacts`)
+      const response = await axios.post(`${apiUrl}/api/contacts`, { name, email, message })
+      console.log('Contact response:', response)
       setStatus('Your message has been sent successfully.')
       setName('')
       setEmail('')
       setMessage('')
     } catch (error) {
+      console.error('Contact form error:', error.message, error.response?.data)
       setStatus('Unable to send message. Please try again later.')
     } finally {
       setLoading(false)

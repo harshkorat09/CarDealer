@@ -1,4 +1,4 @@
-# AutoVault
+# CarBazzar
 
 Premium used car marketplace built with React, Tailwind CSS, Node.js, Express, and MongoDB.
 
@@ -37,9 +37,9 @@ npm install
 Create a `.env` file in `server/` with:
 
 ```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/autovault?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/carbazzar?retryWrites=true&w=majority
 JWT_SECRET=your_super_secure_jwt_secret_here
-ADMIN_EMAIL=admin@autovault.com
+ADMIN_EMAIL=admin@carbazzar.com
 ADMIN_PASSWORD=Admin123!
 CLIENT_URL=http://localhost:5173
 PORT=5000
@@ -72,7 +72,7 @@ deploy.bat
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/yourusername/autovault.git
+   git remote add origin https://github.com/yourusername/carbazzar.git
    git push -u origin main
    ```
 
@@ -86,9 +86,9 @@ deploy.bat
    - Railway will detect the `server/` folder
    - Set environment variables in Railway dashboard:
      ```
-     MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/autovault?retryWrites=true&w=majority
+     MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/carbazzar?retryWrites=true&w=majority
      JWT_SECRET=your_super_secure_jwt_secret_here
-     ADMIN_EMAIL=admin@autovault.com
+     ADMIN_EMAIL=admin@carbazzar.com
      ADMIN_PASSWORD=Admin123!
      CLIENT_URL=https://your-frontend-domain.up.railway.app
      NODE_ENV=production

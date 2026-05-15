@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Search, Sparkles, ShieldCheck, Globe, Star, TrendingUp } from 'lucide-react'
+import { ShieldCheck, Globe, Star, TrendingUp } from 'lucide-react'
 import axios from 'axios'
 import ContactForm from '../components/ContactForm'
 import carsData from '../data/cars'
+import logo from '../assets/logo.svg'
 
 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -16,21 +17,56 @@ const features = [
 
 const aiUseCases = ['Family', 'Sports', 'Electric']
 const budgetOptions = ['500000', '1000000', '1500000', '2000000']
+const brandOptions = [
+  'Maruti Suzuki',
+  'Hyundai',
+  'Tata',
+  'Mahindra',
+  'Toyota',
+  'Honda',
+  'Kia',
+  'Skoda',
+  'Volkswagen',
+  'Renault',
+  'Nissan',
+  'MG',
+  'Ford',
+  'Jeep',
+  'BMW',
+  'Audi',
+  'Mercedes-Benz',
+  'Volvo',
+  'Jaguar',
+  'Land Rover',
+  'Lexus',
+  'Fiat',
+  'Mitsubishi',
+]
 
 const Home = () => {
   const [cars, setCars] = useState(carsData)
   const [search, setSearch] = useState('')
   const [brand, setBrand] = useState('')
+  const [brandMenuOpen, setBrandMenuOpen] = useState(false)
   const [fuelType, setFuelType] = useState('')
   const [transmission, setTransmission] = useState('')
-  const [budget, setBudget] = useState('80000')
+  const [budget, setBudget] = useState('500000')
   const [purpose, setPurpose] = useState('Family')
 
   useEffect(() => {
     const fetchCars = async () => {
       try {
         const response = await axios.get(`${apiUrl}/api/cars`)
-        setCars(response.data)
+        const apiCars = response.data
+        // If API returns remote/broken images, prefer local images shipped in `carsData`
+        const merged = apiCars.map((car) => {
+          const local = carsData.find((c) => c.id === car.id || c.name === car.name)
+          if (local && local.images && local.images.length) {
+            return { ...car, images: local.images }
+          }
+          return car
+        })
+        setCars(merged)
       } catch (error) {
         console.warn('Unable to load cars from API, using fallback data.')
       }
@@ -67,63 +103,66 @@ const Home = () => {
       .slice(0, 4)
   }, [cars, budget, purpose])
 
-  const brands = Array.from(new Set(cars.map((car) => car.brand)))
+  const brands = brandOptions
   const fuelTypes = Array.from(new Set(cars.map((car) => car.fuelType)))
   const transmissions = Array.from(new Set(cars.map((car) => car.transmission)))
 
   return (
     <main className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-8">
-      <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-2 text-sm text-sky-200">
-            <Sparkles size={16} /> Premium used cars for premium buyers
-          </div>
-          <div className="space-y-6">
-            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-white sm:text-6xl">
-              Find Your Perfect Second-Hand Car with AutoVault
-            </h1>
-            <p className="max-w-2xl text-slate-300 sm:text-lg">
-              Browse premium verified cars, get smart recommendations, and contact our team directly from a polished marketplace.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <a href="#inventory" className="btn-primary">
-              Browse Cars
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Contact Sales
-            </a>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="card-glass p-6">
-              <p className="text-sm uppercase tracking-[0.24em] text-sky-300">Trusted network</p>
-              <p className="mt-3 text-xl font-semibold text-white">Verified cars with full transparency</p>
+      <section className="space-y-10 py-10">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+                Drive Your Dream Car Today
+              </h1>
+              <p className="max-w-2xl text-slate-300 sm:text-lg">
+                Discover our curated collection of premium pre-owned vehicles, each inspected and certified for a luxury driving experience.
+              </p>
             </div>
-            <div className="card-glass p-6">
-              <p className="text-sm uppercase tracking-[0.24em] text-sky-300">Fast support</p>
-              <p className="mt-3 text-xl font-semibold text-white">Personalized buying guidance</p>
+
+            <div className="flex flex-wrap gap-4">
+              <a href="#inventory" className="btn-primary inline-flex items-center gap-2">
+                View Inventory
+              </a>
+              <a href="#contact" className="btn-secondary">
+                Contact Us
+              </a>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-5 text-center">
+                <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Vehicles Sold</p>
+                <p className="mt-3 text-3xl font-semibold text-white">500+</p>
+              </div>
+              <div className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-5 text-center">
+                <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Customer Rating</p>
+                <p className="mt-3 text-3xl font-semibold text-white">4.9</p>
+              </div>
+              <div className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-5 text-center">
+                <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Years Experience</p>
+                <p className="mt-3 text-3xl font-semibold text-white">15+</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-slate-800/70 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/40">
-          <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-sky-500/10 to-transparent" />
-          <img
-            src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1400&q=80"
-            alt="Luxury car"
-            className="h-[420px] w-full rounded-[2rem] object-cover shadow-2xl shadow-slate-950/40"
-          />
-          <div className="mt-6 rounded-3xl bg-slate-950/90 p-6 backdrop-blur-xl">
-            <p className="text-sm uppercase tracking-[0.28em] text-slate-400">Featured launch</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white">AutoVault Select</h2>
-            <p className="mt-2 text-slate-300">A curated collection of high-demand premium vehicles with transparent history and premium service.</p>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-slate-800/70 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/40">
+            <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-slate-800/40 to-transparent" />
+            <img
+              src="/images/web.jpeg"
+              alt="Premium car showcase"
+              className="relative h-[420px] w-full rounded-[2rem] object-cover shadow-2xl shadow-slate-950/30"
+            />
+            <div className="absolute bottom-6 left-6 right-6 rounded-[1.75rem] border border-white/10 bg-slate-950/90 p-6 backdrop-blur-xl">
+              <p className="text-sm uppercase tracking-[0.24em] text-sky-300">Luxury collection</p>
+              <h2 className="mt-3 text-3xl font-semibold text-white">CarBazzar Select</h2>
+              <p className="mt-2 text-slate-300">Certified premium vehicles ready for your next journey.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="inventory" className="mt-16 space-y-8">
+      <section id="inventory" className="space-y-8">
         <div className="flex flex-col gap-6 rounded-[2rem] border border-slate-800/60 bg-slate-950/70 p-6 shadow-xl shadow-slate-950/20 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Featured Cars</p>
@@ -137,16 +176,39 @@ const Home = () => {
               placeholder="Search car name"
               className="rounded-3xl border border-slate-700 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none focus:border-sky-400"
             />
-            <select
-              value={brand}
-              onChange={(event) => setBrand(event.target.value)}
-              className="rounded-3xl border border-slate-700 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none focus:border-sky-400"
-            >
-              <option value="">All brands</option>
-              {brands.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setBrandMenuOpen((open) => !open)}
+                className="w-full rounded-3xl border border-slate-700 bg-slate-950/90 px-4 py-3 text-left text-slate-100 outline-none focus:border-sky-400"
+              >
+                <span className="text-sm text-slate-300">Brand</span>
+                <span className="block truncate text-base text-slate-100">
+                  {brand || 'All brands'}
+                </span>
+              </button>
+              {brandMenuOpen && (
+                <div className="absolute left-0 right-0 z-50 mt-2 max-h-64 overflow-y-auto rounded-3xl border border-slate-700 bg-slate-950/95 shadow-2xl shadow-slate-950/30">
+                  <button
+                    type="button"
+                    onClick={() => { setBrand(''); setBrandMenuOpen(false); }}
+                    className="w-full px-4 py-3 text-left text-slate-100 hover:bg-slate-900"
+                  >
+                    All brands
+                  </button>
+                  {brands.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => { setBrand(option); setBrandMenuOpen(false); }}
+                      className="w-full px-4 py-3 text-left text-slate-100 hover:bg-slate-900"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <select
               value={fuelType}
               onChange={(event) => setFuelType(event.target.value)}
@@ -223,7 +285,7 @@ const Home = () => {
         <div className="card-glass p-8">
           <p className="text-sm uppercase tracking-[0.24em] text-sky-300">AI Recommendation Engine</p>
           <h2 className="mt-4 text-3xl font-semibold text-white">Select your budget and use case</h2>
-          <p className="mt-4 text-slate-300">AutoVault smartly suggests the best cars for your needs using adaptive filtering logic.</p>
+          <p className="mt-4 text-slate-300">Our smart recommendation engine suggests the best cars for your needs using adaptive filtering logic.</p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <label className="block">

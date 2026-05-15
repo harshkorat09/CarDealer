@@ -12,15 +12,24 @@ export const carSeed = [
     seats: 5,
     bodyType: 'Hatchback',
     images: [
-      'https://images.unsplash.com/photo-1549399735-cef2e2c3f638?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1471478337293-9845f618fedb?auto=format&fit=crop&w=1400&q=80'
+      '/images/ms1.jpeg',
+      '/images/ms2.jpeg',
+      '/images/ms3.jpeg'
     ],
-    overview: 'Popular hatchback known for reliability, fuel efficiency, and low maintenance costs.',
-    features: ['ABS with EBD', 'Dual airbags', 'Touchscreen infotainment', 'Rear parking sensors'],
-    sellerName: 'AutoVault Premium',
+    overview: 'Well-maintained hatchback with excellent mileage and low maintenance cost.',
+    features: [
+      'ABS with EBD',
+      'Dual airbags',
+      'Touchscreen infotainment',
+      'Rear parking sensors'
+    ],
+    color: 'Fusion Red',
+    owners: 1,
+    insurance: 'Valid until 2027',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Delhi, India',
   },
+
   {
     name: 'Hyundai Creta SX',
     brand: 'Hyundai',
@@ -32,15 +41,24 @@ export const carSeed = [
     seats: 5,
     bodyType: 'SUV',
     images: [
-      'https://images.unsplash.com/photo-1549399735-cef2e2c3f638?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80'
+      '/images/hc1.jpeg',
+      '/images/hc2.jpeg',
+      '/images/hc3.jpeg'
     ],
-    overview: 'Spacious compact SUV with modern features and strong resale value.',
-    features: ['6-speed automatic', 'Touchscreen with Apple CarPlay', 'Rear AC vents', 'LED DRLs'],
-    sellerName: 'AutoVault Premium',
+    overview: 'Spacious SUV with premium interiors and excellent road presence.',
+    features: [
+      'Apple CarPlay',
+      'Rear AC vents',
+      'Automatic gearbox',
+      'LED DRLs'
+    ],
+    color: 'Silver',
+    owners: 2,
+    insurance: 'Valid until 2026',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Mumbai, India',
   },
+
   {
     name: 'Honda City ZX',
     brand: 'Honda',
@@ -52,15 +70,24 @@ export const carSeed = [
     seats: 5,
     bodyType: 'Sedan',
     images: [
-      'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80'
+      '/images/c1.jpeg',
+      '/images/c2.jpeg',
+      '/images/c3.jpeg'
     ],
-    overview: 'Reliable sedan with excellent build quality and low ownership costs.',
-    features: ['Honda Connect', 'Multi-angle rear camera', 'Auto climate control', 'Smart keyless entry'],
-    sellerName: 'AutoVault Premium',
+    overview: 'Premium sedan with smooth driving experience and excellent comfort.',
+    features: [
+      'Sunroof',
+      'Push button start',
+      'Rear camera',
+      'Auto climate control'
+    ],
+    color: 'Pearl White',
+    owners: 1,
+    insurance: 'Valid until 2028',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Bangalore, India',
   },
+
   {
     name: 'Mahindra Scorpio S11',
     brand: 'Mahindra',
@@ -72,15 +99,24 @@ export const carSeed = [
     seats: 7,
     bodyType: 'SUV',
     images: [
-      'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1498598452786-0a4fe5e26269?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80'
+      '/images/s1.jpeg',
+      '/images/s2.jpeg',
+      '/images/s3.jpeg'
     ],
-    overview: 'Rugged 7-seater SUV perfect for family trips and off-road adventures.',
-    features: ['4x4 capability', 'Touchscreen infotainment', 'Hill hold control', 'Roof rails'],
-    sellerName: 'AutoVault Premium',
+    overview: 'Rugged SUV ideal for highways and family road trips.',
+    features: [
+      '7 Seater',
+      'Cruise control',
+      'Touchscreen system',
+      'Rear camera'
+    ],
+    color: 'Black',
+    owners: 2,
+    insurance: 'Valid until 2027',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Chennai, India',
   },
+
   {
     name: 'Toyota Fortuner Sigma 4',
     brand: 'Toyota',
@@ -92,15 +128,24 @@ export const carSeed = [
     seats: 7,
     bodyType: 'SUV',
     images: [
-      'https://images.unsplash.com/photo-1549921296-3ec0a4c528ea?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1495121605193-b116b5b9c5d0?auto=format&fit=crop&w=1400&q=80'
+      '/images/f1.jpeg',
+      '/images/f2.jpeg',
+      '/images/f3.jpeg'
     ],
-    overview: 'Premium SUV with legendary reliability and strong resale value.',
-    features: ['TRD body kit', '7-inch touchscreen', 'Cruise control', 'Multi-terrain select'],
-    sellerName: 'AutoVault Premium',
+    overview: 'Premium SUV with powerful engine and luxury interiors.',
+    features: [
+      'Leather seats',
+      'Cruise control',
+      'Automatic transmission',
+      'LED headlamps'
+    ],
+    color: 'Midnight Black',
+    owners: 1,
+    insurance: 'Valid until 2028',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Hyderabad, India',
   },
+
   {
     name: 'Volkswagen Polo Highline Plus',
     brand: 'Volkswagen',
@@ -112,21 +157,27 @@ export const carSeed = [
     seats: 5,
     bodyType: 'Hatchback',
     images: [
-      'https://images.unsplash.com/photo-1511910849309-8e8a9f73a8a2?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1549921296-3ec0a4c528ea?auto=format&fit=crop&w=1400&q=80'
+      '/images/p1.jpeg',
+      '/images/p2.jpeg',
+      '/images/p3.jpeg'
     ],
-    overview: 'German engineering with premium interiors and advanced safety features.',
-    features: ['Multi-function steering', 'Composition Media', 'ESP with ABS', 'Climatronic AC'],
-    sellerName: 'AutoVault Premium',
+    overview: 'German-engineered hatchback with sporty performance.',
+    features: [
+      'DSG automatic',
+      'ESP with ABS',
+      'Touchscreen system',
+      'Climate control'
+    ],
+    color: 'Blue',
+    owners: 1,
+    insurance: 'Valid until 2026',
+    sellerName: 'CarBazzar',
     sellerLocation: 'Pune, India',
   }
 ]
 
 export async function seedCars() {
-  const count = await Car.countDocuments()
-  if (count === 0) {
-    await Car.create(carSeed)
-    console.log('Seeded car inventory to MongoDB')
-  }
+  await Car.deleteMany()
+  await Car.create(carSeed)
+  console.log(`Reset MongoDB car inventory to ${carSeed.length} updated cars`)
 }

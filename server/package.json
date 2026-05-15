@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "type": "module",
-  "description": "AutoVault backend API",
+  "description": "CarBazzar backend API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
